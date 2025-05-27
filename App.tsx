@@ -1,12 +1,25 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 
 const App = () => {
   return (
-    <View>
-      <Text>Welcome to HomieFoodie!</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Welcome to HomieFoodie!</Text>
+    </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+});
 
 export default App;
