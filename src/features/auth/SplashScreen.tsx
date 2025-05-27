@@ -1,14 +1,23 @@
-import React, { FC } from 'react';
 import { Image, Platform, StatusBar, View } from 'react-native';
+import React, { FC, useEffect } from 'react';
 import Animated,{FadeInDown} from 'react-native-reanimated';
 import { useStyles } from 'react-native-unistyles';
 import { splashStyles } from '@unistyles/authStyles';
 import CustomText from '@components/global/CustomText';
+import { resetAndNavigate } from '@utils/NavigationUtils';
 
 const SplashScreen: FC = () => {
 
     const {styles} = useStyles(splashStyles);
 
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            resetAndNavigate('LoginScreen');
+        }, 3000);
+
+        return () => clearTimeout(timeoutId);
+
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -16,7 +25,6 @@ const SplashScreen: FC = () => {
             <Image 
                 source={require('@assets/images/logo_t.png')}
                 style={styles.logoImage}
-                resizeMode="contain"
             />
             <Animated.View 
                 style={styles.animatedContainer}
@@ -25,13 +33,12 @@ const SplashScreen: FC = () => {
                     source={require('@assets/images/tree.png')}
                     style={styles.treeImage}
                     />
+
                 <CustomText
                 variant='h5'
                 style={styles.msgText}
                 fontFamily='Okra-Medium'
-                color= "#fff"
-
-                >
+                color= "#fff">
                     From kitchen to doorstep, we deliver the best of local produce !
                 </CustomText>
             </Animated.View>

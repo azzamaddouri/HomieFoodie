@@ -1,28 +1,26 @@
-import { Colors } from '@unistyles/Constants';
 import React, { FC } from 'react';
 import { Platform, StyleSheet, Text, TextStyle } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { Colors } from '@unistyles/Constants';
 
 type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'h7';
 
-type PlatformType = 'ios' | 'android';
+type PlatformType = 'android' | 'ios'  ;
 
 interface CustomTextProps {
     variant?: Variant;
     fontFamily?:
-    "Okra-Bold" |
-    "Okra-Regular" |
-    "Okra-Light" |
-    "Okra-Medium" |
-    "Okra-Black" ;
+    | "Okra-Bold" 
+    | "Okra-Regular"
+    | "Okra-Light" 
+    | "Okra-Medium" 
+    | "Okra-Black" ;
     fontSize?: number;
     color?: string;
     style?: TextStyle | TextStyle[];
     children?: React.ReactNode;
     numberOfLines?: number;
-    onLayout?: ((
-        event: any
-    ) => void) ;
+    onLayout?: (event: any) => void ;
 }
 
 const fontSizeMap: Record<Variant, Record<PlatformType, number>> = {
