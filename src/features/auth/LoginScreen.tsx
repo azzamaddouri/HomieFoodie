@@ -42,7 +42,7 @@ const LoginScreen: React.FC = () => {
        setLoading(true);
        setTimeout(() => {
          setLoading(false); 
-         resetAndNavigate('userBottomTab');
+         resetAndNavigate('UserBottomTab');
        }, 2000);
       }
    
