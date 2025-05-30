@@ -11,7 +11,7 @@ import { DeliveryTabIcon, DiningTabIcon, LiveTabIcon, ReorderTabIcon } from './T
 import { Image , Alert, TouchableOpacity, View } from 'react-native';
 import { useAppSelector } from '@states/reduxHook';
 
-const CustomTabBar: React.FC<BottomTabBarProps> = props => {
+const CustomTabBar: React.FC<BottomTabBarProps> = (props) => {
 
     const isVegMode = useAppSelector(state => state.user.isVegMode); 
 

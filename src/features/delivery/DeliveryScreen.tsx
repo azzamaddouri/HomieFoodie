@@ -1,5 +1,6 @@
 import Graphics from '@components/home/Graphics';
 import HeaderSection from '@components/home/HeaderSection';
+import MainList from '@components/list/MainList';
 import { useSharedState } from '@features/tabs/SharedContext';
 import { homeStyles } from '@unistyles/homeStyles';
 import React from 'react';
@@ -67,7 +68,7 @@ const DeliveryScreen = () => {
                 </Animated.View>
 
                 <Animated.View style={moveUpStyle}>
-
+                   <MainList/>
                 </Animated.View>
         </View>
     );
