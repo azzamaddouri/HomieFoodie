@@ -9,6 +9,8 @@ import Animated, { interpolate, useAnimatedStyle } from 'react-native-reanimated
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import RollingContent from 'react-native-rolling-bar';
+import { useAppDispatch, useAppSelector } from '@states/reduxHook';
+import { setVegMode } from '@states/reducers/userSlice';
 
 const searchItems : string[] = [
     'Search "chai samosa"',
@@ -20,7 +22,8 @@ const searchItems : string[] = [
 
 
 const SearchBar = () => {
-    const isVegMode = true;
+    const dispatch = useAppDispatch();
+    const isVegMode = useAppSelector(state => state.user.isVegMode);
 
     const {styles} = useStyles(homeStyles);
     const {scrollYGlobal} = useSharedState();
@@ -77,7 +80,7 @@ const SearchBar = () => {
 
                 <Pressable
                     style={styles.vegMode}
-                    onPress={() => {}
+                    onPress={() => dispatch(setVegMode(!isVegMode))
                     }
                 >
                     <Animated.Text style={[styles.animatedText, textColorAnimation]}>
