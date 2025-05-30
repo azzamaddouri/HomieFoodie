@@ -8,7 +8,7 @@ import { persistor, store } from '@states/store';
 const App = () => {
   return  (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}> {/* Delays rendering app until the persisted state has been restored from storage (like localStorage). */}
+      <PersistGate loading={null} persistor={persistor}> 
          <Navigation />
       </PersistGate>
     </Provider>
@@ -21,6 +21,7 @@ export default App;
 ** Hydration: Loading saved Redux state from storage.
 ** Rehydrated: Store has been fully loaded with saved state.
 -> PersistGate waits for rehydration before rendering the app.
+--> PersistGate : Delays rendering app until the persisted state has been restored from storage (like localStorage).
 
 Imagine Redux store is like a car:
 
