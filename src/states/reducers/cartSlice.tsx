@@ -236,7 +236,7 @@ export const cartSlice = createSlice({
 
       const matchingCustomizationIndex = item?.customizations?.findIndex(
         (cust: any) =>
-          cust?.id === customizationId &&
+          cust?.id !== customizationId &&
           JSON.stringify(cust.customizationOptions) ===
           JSON.stringify(newCustomization.customizationOptions),
       );
@@ -255,7 +255,7 @@ export const cartSlice = createSlice({
           item.customizations[matchingCustomizationIndex];
 
         matchingCustomization.quantity += newCustomization?.quantity;
-        matchingCustomization.cartPrice += newCustomization?.price;
+        matchingCustomization.cartPrice += newCustomization.price;
 
         item?.customizations?.splice(targetCustomizationIndex, 1);
 
@@ -264,9 +264,8 @@ export const cartSlice = createSlice({
         targetCustomization.cartPrice = newCustomization.price;
         targetCustomization.price =
           newCustomization.price / newCustomization.quantity;
-        targetCustomization.customizationOptions = [
-          newCustomization.customizationOptions,
-        ];
+        targetCustomization.customizationOptions = 
+          newCustomization.customizationOptions
       }
 
       item.quantity = item?.customizations?.reduce(
@@ -292,16 +291,18 @@ export const cartSlice = createSlice({
     ) => {
       const { restaurant_id, customizationId, itemId } = action.payload;
       const restaurantCart = state?.carts?.find(
-        (cart) => cart.restaurant.id === restaurant_id
+        (cart) => cart?.restaurant?.id === restaurant_id
       );
       if (!restaurantCart) return;
       const item = restaurantCart?.items?.find(
         (cartItem) => cartItem?.id === itemId);
+
       if (!item) return;
 
       const customizationIndex = item?.customizations?.findIndex(
         cust => cust?.id === customizationId
       ) as number;
+      
       if (customizationIndex !== -1 && item?.customizations) {
         const customization = item.customizations[customizationIndex];
         if (customization?.quantity > 1) {

@@ -55,7 +55,7 @@ const EditItemModal: FC<{
 
   cus?.customizationOptions?.forEach((cusOption: any) => {
     const itemCustomization = item?.customizationOptions?.find(
-      (option: any) => option?.type === cusOption?.type
+      (option: any) => option.type === cusOption?.type
     );
 
     if (itemCustomization) {
@@ -127,7 +127,8 @@ const removeCartHandler = () => {
     setData(prevData => ({
       ...prevData,
       quantity: prevData?.quantity - 1,
-      price: calculatePrice(prevData?.quantity - 1, prevData?.selectedOption),
+      price:
+       calculatePrice(prevData?.quantity - 1, prevData?.selectedOption),
     }));
   } else {
     onClose();
@@ -275,7 +276,7 @@ const updateItemIntoCart = async () => {
     style={styles.addButtonContainer}
      onPress={updateItemIntoCart}>
       <CustomText color="#fff" fontFamily="Okra-Medium" variant="h5">
-        Update Item - TND{data?.price}
+        Update item - TND{data?.price}
       </CustomText>
     </TouchableOpacity>
       <SafeAreaView />
