@@ -10,6 +10,7 @@ import ScalePress from '@components/ui/ScalePress';
 import { DeliveryTabIcon, DiningTabIcon, LiveTabIcon, ReorderTabIcon } from './TabIcon';
 import { Image , Alert, TouchableOpacity, View } from 'react-native';
 import { useAppSelector } from '@states/reduxHook';
+import CartHOC from '@features/checkout/CartHOC';
 
 const CustomTabBar: React.FC<BottomTabBarProps> = (props) => {
 
@@ -48,6 +49,9 @@ const CustomTabBar: React.FC<BottomTabBarProps> = (props) => {
 
     return (
         <>
+        {!isLiveTabFocused && 
+            <CartHOC />
+             }
       <Animated.View
         style={[
           styles.tabBarContainer,
