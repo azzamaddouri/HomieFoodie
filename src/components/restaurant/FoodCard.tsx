@@ -8,7 +8,7 @@ import { Colors } from '@unistyles/Constants';
 import AddButton from './AddButton';
 
 const FoodCard: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => {
- const { styles } = useStyles(foodStyles);
+  const { styles } = useStyles(foodStyles);
 
   return (
     <View style={styles.container}>
@@ -22,39 +22,39 @@ const FoodCard: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => {
           style={styles.vegIcon}
         />
 
-<CustomText fontSize={12} numberOfLines={1} fontFamily="Okra-Medium">
-  {item?.name}
-</CustomText>
-<CustomText
- fontSize={10} 
- numberOfLines={2}
-  style={styles.lowOpacity}>
-  {item?.description}
-</CustomText>
-<CustomText fontSize={11} numberOfLines={1} fontFamily="Okra-Medium">
-  TND{item?.price}
-</CustomText>
-<TouchableOpacity style={styles.addToCollectionContainer}>
-  <Icon
-    name="bookmark-outline"
-    iconFamily="Ionicons"
-    size={16}
-    color={Colors.primary}
-  />
-  <CustomText color="#888" fontFamily="Okra-Medium" fontSize={9.5}>
-    Add to Collection
-  </CustomText>
-      </TouchableOpacity>
-</View>
-     
-<View style={styles.imageContainer}>
-  <View style={styles.image}>
-    <Image source={{ uri: item?.image }} style={styles.foodImage} />
-  </View>
-  <AddButton item={item} restaurant={restaurant} />
-  </View>
- </View>
+        <CustomText fontSize={12} numberOfLines={1} fontFamily="Okra-Medium">
+          {item?.name}
+        </CustomText>
+        <CustomText
+          fontSize={10}
+          numberOfLines={2}
+          style={styles.lowOpacity}>
+          {item?.description}
+        </CustomText>
+        <CustomText fontSize={11} numberOfLines={1} fontFamily="Okra-Medium">
+          TND{item?.price}
+        </CustomText>
+        <TouchableOpacity style={styles.addToCollectionContainer}>
+          <Icon
+            name="bookmark-outline"
+            iconFamily="Ionicons"
+            size={16}
+            color={Colors.primary}
+          />
+          <CustomText color="#888" fontFamily="Okra-Medium" fontSize={9.5}>
+            Add to Collection
+          </CustomText>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.imageContainer}>
+        <View style={styles.image}>
+          <Image source={{ uri: item?.image }} style={styles.foodImage} />
+        </View>
+        <AddButton item={item} restaurant={restaurant} />
+      </View>
+    </View>
   );
 };
 
-export default memo (FoodCard);
+export default memo(FoodCard);
