@@ -5,6 +5,7 @@ import SplashScreen from "@features/auth/SplashScreen";
 import LoginScreen from "@features/auth/LoginScreen";
 import { navigationRef } from "@utils/NavigationUtils";
 import AnimatedTabs from "@features/tabs/AnimatedTabs";
+import RestaurantScreen from "@features/restaurants/RestaurantScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,10 @@ const Navigation:FC = () => {
           <Stack.Screen 
               name="SplashScreen" 
               component={SplashScreen}
+          />  
+          <Stack.Screen 
+              name="RestaurantScreen" 
+              component={RestaurantScreen}
           />  
           <Stack.Screen 
           options={{
