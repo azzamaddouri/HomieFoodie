@@ -11,9 +11,9 @@ import { foodStyles } from "@unistyles/foodStyles";
 import { useStyles } from "react-native-unistyles";
 import { addItemToCart, removeCustomizableItem, removeItemFromCart, selectRestaurantCartItem } from "@states/reducers/cartSlice";
 import CustomModal from "@components/modal/CustomModal";
-import RemoveItemModal from "@components/modal/RemoveItemModal";
 import AddItemModal from "@components/modal/AddItemModal";
 import RepeatItemModal from "@components/modal/RepeatItemModal";
+import RemoveItemModal from "@components/modal/RemoveItemModal";
 
 const AddButton: FC<{ item: any; restaurant: any }> = ({ item, restaurant }) => {
  const dispatch = useAppDispatch();
@@ -46,7 +46,6 @@ const openRemoveModal = () => {
   modalRef.current?.openModal(
     <RemoveItemModal
     item= { item }
-    onOpenAddModal= {openAddModal} 
     closeModal= {() => modalRef.current?.closeModal()}
     restaurant={restaurant} />
   );
