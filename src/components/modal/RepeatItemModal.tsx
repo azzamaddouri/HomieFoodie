@@ -15,7 +15,7 @@ const RepeatItemModal: FC<{
   closeModal: () => void;
 }> = ({ item, onOpenAddModal, restaurant, closeModal }) => {
   const cartItem = useAppSelector(
-    selectRestaurantCartItem(restaurant?.id, item),
+    selectRestaurantCartItem(restaurant?.id, item?.id),
   );
   const {styles} = useStyles(modelStyles);
 

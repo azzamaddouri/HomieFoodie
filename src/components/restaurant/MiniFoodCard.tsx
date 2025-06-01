@@ -17,6 +17,7 @@ const MiniFoodCard: FC<{
   cus: any;
   restaurant: any;
 }> = ({ cus, restaurant, item }) => {
+
   const { styles } = useStyles(modelStyles);
 
   const dispatch = useAppDispatch();
@@ -32,7 +33,7 @@ modalRef?.current?.openModal(
     item={item}
     cus={cus}
     restaurant={restaurant}
-    onClose={() => modalRef.current?.closeModal()}
+    onClose={() => modalRef?.current?.closeModal()}
   />
 );
   };
@@ -71,13 +72,13 @@ const removeCartHandler = (cus: any) => {
         source={
           cartItem?.isVeg
             ? require('@assets/icons/veg.png')
-            : require('@assets/icons/non-veg.png')
+            : require('@assets/icons/non_veg.png')
         }
       />
 
 <View>
   <CustomText fontFamily="Okra-Bold">{cartItem?.name}</CustomText>
-  <CustomText fontFamily="Okra-Medium">{`$${cus?.price}`}</CustomText>
+  <CustomText fontFamily="Okra-Medium">TND{cus?.price}</CustomText>
   <CustomText style={styles.selectedOptions}>
     {cus?.customizationOptions?.map((i: any, idx: number) => {
       return (
@@ -87,6 +88,7 @@ const removeCartHandler = (cus: any) => {
       );
     })}
   </CustomText>
+
   <TouchableOpacity style={styles.flexRow} onPress={openEditModal}>
     <CustomText fontFamily="Okra-Medium" color="#444" fontSize={9}>
       Edit
@@ -101,7 +103,7 @@ const removeCartHandler = (cus: any) => {
     </View>
   </TouchableOpacity>
 </View>
-    </View>
+</View>
 
 
 <View style={styles.cartOperationContainer}>

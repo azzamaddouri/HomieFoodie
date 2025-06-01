@@ -21,14 +21,13 @@ const CustomModal = forwardRef((props, ref) => {
   }));
 
   return (
-    <View>
       <Modal 
       transparent
       visible={visible}
       animationType="slide"
        onRequestClose={()=> setVisible(false)}>
        {
-        Platform.OS === "ios" && (<BlurView style={styles.absolute}
+        Platform.OS === 'ios' && (<BlurView style={styles.absolute}
             blurType="light"
             blurAmount={10} />
 
@@ -43,7 +42,7 @@ const CustomModal = forwardRef((props, ref) => {
       <Icon iconFamily="Ionicons" name="close" size={24} color="#fff" />
     </TouchableOpacity>
     {content ? (
-      <View style={styles.modalContent}>{content}</View>
+      <View style={styles.modelContent}>{content}</View>
     ) : (
       <Text style={styles.placeholderText}>No Content Provided</Text>
     )}
@@ -51,14 +50,13 @@ const CustomModal = forwardRef((props, ref) => {
 </View>
        
       </Modal>
-    </View>
   );
 });
 export default CustomModal;
 
 
 const styles = StyleSheet.create({
-  modalContent: {
+  modelContent: {
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     overflow: 'hidden',
@@ -70,7 +68,6 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    filter: Platform.OS === 'android' ? [{blur:4}] : undefined,
     justifyContent: 'flex-end'
   },
   contentContainer: {

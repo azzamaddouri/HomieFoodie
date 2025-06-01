@@ -49,6 +49,7 @@ const AddItemModal: FC<{
   
   useEffect(() => {
   const defaultSelectedOption: Record<string, number> = {};
+
   let initialPrice = item?.price || 0;
 
    item?.customizationOptions?.forEach((customization: any) => {
@@ -66,8 +67,8 @@ const AddItemModal: FC<{
 
   setData(prevData => ({
     ...prevData,
-    selectedOption:defaultSelectedOption,
-    initialPrice,
+    selectedOption: defaultSelectedOption,
+    price : initialPrice,
   }));
 }, [item]);
   
@@ -93,7 +94,8 @@ const calculatePrice = (
 
 const selectOptionHandler = (type: string, index: number) => {
   setData(prevData => {
-    const updatedSelectedOption = { ...prevData.selectedOption, [type]: index };
+    const updatedSelectedOption = 
+    { ...prevData.selectedOption, [type]: index };
     const updatedPrice = calculatePrice(
       prevData?.quantity,
       updatedSelectedOption,
@@ -111,7 +113,8 @@ const addCartHandler = () => {
   setData(prevData => ({
     ...prevData,
     quantity: prevData?.quantity + 1,
-    price: calculatePrice(prevData?.quantity + 1, prevData?.selectedOption),
+    price: 
+    calculatePrice(prevData?.quantity + 1, prevData?.selectedOption),
   }));
 };
 
@@ -120,7 +123,8 @@ const removeCartHandler = () => {
     setData(prevData => ({
       ...prevData,
       quantity: prevData?.quantity - 1,
-      price: calculatePrice(prevData?.quantity - 1, prevData?.selectedOption),
+      price: 
+      calculatePrice(prevData?.quantity - 1, prevData?.selectedOption),
     }));
   } else {
     onClose();
@@ -146,6 +150,7 @@ const addItemIntoCart = async () => {
   dispatch(addCustomizableItem(customizedData));
   onClose();
 };
+
   return (
     <View>
    <View style={styles.headerContainer}>

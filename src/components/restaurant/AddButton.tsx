@@ -53,6 +53,7 @@ const openRemoveModal = () => {
 
 const addCartHandler = useCallback(() => {
   if (item?.isCustomizable) {
+   
     if (cart != null) {
         openRepeatModal()
         return
@@ -71,7 +72,7 @@ const addCartHandler = useCallback(() => {
 const removeCartHandler = useCallback(() => {
   if (item?.isCustomizable) {
      if (cart?.customizations && cart?.customizations?.length > 1) {
-        openRepeatModal()
+        openRemoveModal()
         return
     }
     dispatch(
