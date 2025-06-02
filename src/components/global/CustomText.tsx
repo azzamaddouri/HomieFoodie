@@ -67,7 +67,6 @@ const CustomText: FC<CustomTextProps> = ({
             styles.text,
             fontFamilyStyle,
             { color: color || Colors.text, fontSize: computedFontSize },
-            fontFamilyStyle,
             style,
                 ]}
         {...props}

@@ -7,6 +7,7 @@ import { Colors } from '@unistyles/Constants';
 import { navigate } from '@utils/NavigationUtils';
 import React, { FC, useMemo } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { useStyles } from 'react-native-unistyles';
 
 const CartItem: FC<{ item: any }> = ({ item }) => {
@@ -57,6 +58,27 @@ const CartItem: FC<{ item: any }> = ({ item }) => {
                     </TouchableOpacity>
                 </View>
             </View>
+
+            <View style={styles.flexRowGap}>
+                <TouchableOpacity style={styles.cartButton}
+                    onPress={() => navigate('CheckoutScreen', { item: item?.restaurant })}>
+                    <CustomText fontFamily="Okra-Bold" color="#fff" fontSize={10}>
+                        View Cart
+                    </CustomText>
+                    <CustomText fontFamily="Okra-Medium" color="#fff" fontSize={8}>
+                        {totalItems} item
+                    </CustomText>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => deleteCart(item?.restaurant.id)}
+                    style={styles.closeButton}>
+                    <Icon
+                        name="close"
+                        iconFamily="MaterialCommunityIcons"
+                        size={RFValue(12)}
+                    />
+                </TouchableOpacity>
+            </View>
+
         </View>
     );
 };

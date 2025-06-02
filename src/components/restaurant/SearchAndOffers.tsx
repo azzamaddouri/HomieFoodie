@@ -90,7 +90,7 @@ const searchAndOffers: FC<{ item: any }> = ({ item }) => {
         }
 
 
-    }, [summary?.totalItems, summary?.totalPrice]);
+    }, [summary.totalItems, summary.totalPrice]);
 
 
 
@@ -123,7 +123,7 @@ const searchAndOffers: FC<{ item: any }> = ({ item }) => {
                                     {item}
                                 </CustomText>
                             )
-                        })};
+                        })}
                     </RollingBar>
                 </TouchableOpacity>
 
@@ -132,14 +132,11 @@ const searchAndOffers: FC<{ item: any }> = ({ item }) => {
                         iconFamily="MaterialCommunityIcons"
                         name="silverware-fork-knife"
                         color={Colors.background}
-                        size={RFValue(16)}
-                    />
+                        size={RFValue(16)}/>
                     <CustomText
                         color={Colors.background}
                         fontSize={12}
-                        fontFamily="Okra-Bold">
-                        Menu
-                    </CustomText>
+                        fontFamily="Okra-Bold">Menu</CustomText>
                 </TouchableOpacity>
             </View>
 
@@ -158,10 +155,9 @@ const searchAndOffers: FC<{ item: any }> = ({ item }) => {
                         <View
                             style={{
                                 padding: 15,
-                                paddingBottom: Platform.OS === 'ios' ? 7.5 : 15,
+                                paddingBottom: Platform.OS === 'ios' ? 25 : 15,
                                 paddingHorizontal: 20,
-                            }}
-                        >
+                            }}>
                             {showConfetti && (
                                 <LottieView
                                     source={require('@assets/animations/confetti_2.json')}
@@ -176,16 +172,19 @@ const searchAndOffers: FC<{ item: any }> = ({ item }) => {
                             <TouchableOpacity
                                 style={styles.offerContent}
                                 activeOpacity={0.8}
-                                onPress={() => navigate('CheckoutScreen', { item })}>
+                                onPress={() => {
+                                    navigate('CheckoutScreen', 
+                                    { item: item });
+                                    }}>
                                 <AnimatedNumber
                                     includeComma={false}
-                                    animationDuration={390}
+                                    animationDuration={300}
                                     animateToNumber={summary?.totalItems}
                                     fontStyle={styles.animatedCount}
                                 />
-                                <CustomText style={styles.offerText}>
-                                    {`item ${summary?.totalItems > 1 ? 's' : ''} added`}
-                                </CustomText>
+                                <CustomText style={styles.offerText}>{` item${
+                                    summary?.totalItems > 1 ? 's' : ''
+                                    } added`}</CustomText>
                                 <Icon
                                     iconFamily="MaterialCommunityIcons"
                                     name="arrow-right-circle"
@@ -194,15 +193,13 @@ const searchAndOffers: FC<{ item: any }> = ({ item }) => {
                                 />
                             </TouchableOpacity>
 
-
                             <Animated.Text
                                 style={[
                                     styles.offerSubtitle,
                                     {
                                         transform: [{ scale: scaleAnim }],
                                     },
-                                ]}
-                            >
+                                ]}>
                                 {summary?.totalPrice > 500
                                     ? 'Congratulations! You get an extra 15% OFF!'
                                     : `Add items worth TND${Math.max(
