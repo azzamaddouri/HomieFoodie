@@ -68,7 +68,7 @@ const LocationHeader: React.FC = () => {
                         style={styles.goldenCircle}
                     />
                     <Image
-                        source={require('@assets/images/user.jpg')}
+                        source={require('@assets/images/user.png')}
                         style={styles.profileImage}
                     />
                 </TouchableOpacity>
